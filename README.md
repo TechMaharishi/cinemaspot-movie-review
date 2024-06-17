@@ -1,0 +1,7 @@
+Username: vishalkumarmca29
+Email: wites65424@cnurbano.com
+
+API Key: 55dfddd7e7b41e080819d2b249c32182
+
+API Read Access Token: 
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NWRmZGRkN2U3YjQxZTA4MDgxOWQyYjI0OWMzMjE4MiIsInN1YiI6IjY2NjllNGFlMGE2YTRjN2FkMWVhMWU4YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n5_QCFlLqtvgKjVGUu6P3TYVHqwQ9Wzja_tVsyxLy-A
