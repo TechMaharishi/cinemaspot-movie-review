@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovie, removeMovie } from '../store/actions/MovieActions';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Outlet, Link } from 'react-router-dom';
 import Loading from '../components/partials/Loading';
-import { FaStar, FaCalendarAlt, FaClock, FaPlayCircle, FaArrowLeft } from 'react-icons/fa';
+import { FaStar, FaCalendarAlt, FaClock, FaPlayCircle, FaArrowLeft, FaDollarSign } from 'react-icons/fa';
 import { MdLocalMovies } from 'react-icons/md';
 import HorizontalCards from '../components/partials/HorizontalCards';
 
@@ -11,6 +11,7 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  const { pathname } = useLocation();
   const movie = useSelector((state) => state.movie.info);
   const error = useSelector((state) => state.movie.error);
 
@@ -71,12 +72,22 @@ const MovieDetail = () => {
             className="md:w-1/3 hover:scale-105 w-full transition duration-500 transform rounded-lg shadow-lg"
           />
           <div className="md:mt-0 md:flex-1 mt-6 space-y-4">
-            <p className="mt-4 text-lg">{detail.overview}</p>
+            <p className="my-4 text-lg">{detail.overview}</p>
+            {videos && (
+              <div className="p-6">
+                <Link to={`${pathname}/trailer`} className="hover:bg-purple-800 px-4 py-2 mt-4 font-semibold text-white transition-colors duration-300 bg-purple-700 rounded-md">
+                  Watch Trailer
+                </Link>
+              </div>
+            )}
             <div className="mt-4 space-y-2">
               <h2 className="flex items-center gap-2 text-2xl font-semibold"><MdLocalMovies className="text-yellow-500" /> Details</h2>
               <p className="flex items-center gap-2"><FaCalendarAlt /> Release Date: {detail.release_date}</p>
               <p className="flex items-center gap-2"><FaStar className="text-yellow-600" /> Rating: {detail.vote_average}</p>
               <p className="flex items-center gap-2"><FaClock /> Runtime: {detail.runtime} minutes</p>
+              <p className="flex items-center gap-2"><FaDollarSign /> Budget: ${detail.budget.toLocaleString()}</p>
+              <p className="flex items-center gap-2"><FaDollarSign /> Revenue: ${detail.revenue.toLocaleString()}</p>
+              <p className="flex items-center gap-2"><MdLocalMovies /> Genres: {detail.genres.map(genre => genre.name).join(', ')}</p>
             </div>
             <div className="mt-4 space-y-2">
               <h2 className="flex items-center gap-2 text-2xl font-semibold"><MdLocalMovies className="text-yellow-500" /> Cast</h2>
@@ -86,21 +97,6 @@ const MovieDetail = () => {
                 ))}
               </ul>
             </div>
-            {videos && (
-              <div className="mt-4">
-                <h2 className="flex items-center gap-2 text-2xl font-semibold"><FaPlayCircle className="text-red-500" /> Trailer</h2>
-                <div className="relative pt-[56.25%]">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videos.key}`}
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title="video"
-                    className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                  ></iframe>
-                </div>
-              </div>
-            )}
             <div className="mt-4">
               <h2 className="flex items-center gap-2 text-2xl font-semibold"><MdLocalMovies className="text-yellow-500" /> Watch Providers</h2>
               {watchprovider ? (
@@ -124,9 +120,10 @@ const MovieDetail = () => {
         </div>
         <div className="mt-8">
           <h2 className="mb-3 text-3xl font-bold">Recommendations: </h2>
-          <HorizontalCards trendingData={recommendations || similar} />
+          <HorizontalCards trendingData={recommendations || similar} mediaType="movie" />
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

@@ -65,12 +65,15 @@ const Banner = ({ wallpapers }) => {
         <p className="md:text-base text-sm text-gray-300">{limitWords(currentOverview, 20)}</p>
         {currentOverview.split(' ').length > 20 && (
           <p className="mt-2 text-sm">
-            <Link to={`/${mediaType}/details/:${id}`} className="hover:underline text-blue-500">Read more...</Link>
+            <Link to={`/${mediaType}/details/${id}`} className="hover:underline text-blue-500">Read more...</Link>
           </p>
         )}
-        <button className="hover:bg-purple-800 px-4 py-2 mt-4 font-semibold text-white transition-colors duration-300 bg-purple-700 rounded-md">
-          Watch Trailer
-        </button>
+        <Link to={`/${mediaType}/details/${id}/trailer`}>
+          <button className="hover:bg-purple-800 px-4 py-2 mt-4 font-semibold text-white transition-colors duration-300 bg-purple-700 rounded-md">
+            Watch Trailer
+          </button>
+        </Link>
+
       </div>
     </div>
   );

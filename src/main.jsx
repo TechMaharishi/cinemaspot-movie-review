@@ -6,14 +6,14 @@ import Home from './pages/Home';
 import Trending from './pages/Trending';
 import Popular from './pages/Popular';
 import Movies from './pages/Movies';
-import MoviesDetails from './pages/MovieDetails';
+import MovieDetails from './pages/MovieDetails';
 import TVShows from './pages/TVShows';
-import TVShowDetails from './pages/TVShowDetails'
+import TVShowDetails from './pages/TVShowDetails';
 import PopularWith from './pages/PopularWith';
 import PopularWithDetails from './pages/PopularWithDetails';
+import Trailer from './pages/Trailer';
 import './index.css';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,9 +24,13 @@ const router = createBrowserRouter(
       <Route path="/movies" element={<Movies />} />
       <Route path="/tv-shows" element={<TVShows />} />
       <Route path="/popular-with" element={<PopularWith />} />
-      <Route path='/movie/details/:id' element={<MoviesDetails />} />
-      <Route path='/tv/details/:id' element={< TVShowDetails />} />
-      <Route path='/person/details/:id' element={<PopularWithDetails />} />
+      <Route path="/movie/details/:id" element={<MovieDetails />}>
+        <Route path="trailer" element={<Trailer />} />
+      </Route>
+      <Route path="/tv/details/:id" element={<TVShowDetails />} >
+        <Route path="trailer" element={<Trailer />} />
+      </Route>
+      <Route path="/person/details/:id" element={<PopularWithDetails />} />
     </>
   )
 );
