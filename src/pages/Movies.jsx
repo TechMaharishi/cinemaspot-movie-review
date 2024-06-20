@@ -83,7 +83,7 @@ const Movies = () => {
         loader={<h1 className="text-center text-white">Loading...</h1>}
       >
         {movieData.map((media, index) => (
-          <Cards key={index} data={media} />
+          <Cards mediaType='movie' key={index} data={media} />
         ))}
       </InfiniteScroll>
       <ScrollToTopButton />

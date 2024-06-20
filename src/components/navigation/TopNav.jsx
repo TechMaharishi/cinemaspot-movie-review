@@ -33,6 +33,8 @@ const TopNav = () => {
     }
   }, [searchTerm]);
 
+  console.log(search);
+
   return (
     <>
       {/* Search Bar  */}
@@ -57,7 +59,7 @@ const TopNav = () => {
             {search.map((result, index) => (
               <Link
                 key={index}
-                to={`/${result.media_type}/${result.id}`}
+                to={`/${result.media_type}/details/${result.id}`}
                 className="hover:bg-gray-100 flex items-center w-full p-4 mb-2 transition duration-300 ease-in-out rounded-lg"
               >
                 <img

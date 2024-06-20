@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-
 const HorizontalCards = ({ trendingData }) => {
   const containerRef = useRef(null);
 
@@ -44,14 +43,14 @@ const HorizontalCards = ({ trendingData }) => {
           {trendingData.map((item) => (
             <Link
               key={item.id}
-              to={`/${item.media_type}/${item.id}`}
+              to={`/${item.media_type}/details/${item.id}`}
               className="hover:scale-105 flex-shrink-0 w-48 overflow-hidden transition duration-300 transform bg-gray-800 rounded-lg shadow-lg"
             >
               <img
                 src={
                   item.poster_path
                     ? `https://image.tmdb.org/t/p/w200${item.poster_path}`
-                    : './no-image.svg'
+                    : './no-image.jpg'
                 }
                 alt={item.title || item.name}
                 className="h-72 object-cover w-full"

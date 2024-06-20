@@ -59,7 +59,7 @@ const TvShows = () => {
             onClick={() => navigate(-1)}
             className="hover:text-purple-500 text-4xl text-white transition duration-300 cursor-pointer"
           />
-          <h1 className="text-3xl font-bold text-white">Movies</h1>
+          <h1 className="text-3xl font-bold text-white">TV Shows</h1>
         </div>
       </div>
       <div className="md:flex-row flex flex-col items-center justify-between mt-4">
@@ -83,7 +83,7 @@ const TvShows = () => {
         loader={<h1 className="text-center text-white">Loading...</h1>}
       >
         {tvShowsData.map((media, index) => (
-          <Cards key={index} data={media} />
+          <Cards mediaType='tv' key={index} data={media} />
         ))}
       </InfiniteScroll>
       <ScrollToTopButton />

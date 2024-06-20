@@ -21,6 +21,7 @@ const Banner = ({ wallpapers }) => {
   const releaseDate = wallpapers[currentImageIndex].release_date;
   const mediaType = wallpapers[currentImageIndex].media_type;
   const currentOverview = wallpapers[currentImageIndex].overview;
+  const id = wallpapers[currentImageIndex].id;
 
   const formatReleaseDate = (date) => {
     return date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Release Date Not Announced';
@@ -64,7 +65,7 @@ const Banner = ({ wallpapers }) => {
         <p className="md:text-base text-sm text-gray-300">{limitWords(currentOverview, 20)}</p>
         {currentOverview.split(' ').length > 20 && (
           <p className="mt-2 text-sm">
-            <Link to={`/details/${mediaType}/${wallpapers[currentImageIndex].id}`} className="hover:underline text-blue-500">Read more...</Link>
+            <Link to={`/${mediaType}/details/:${id}`} className="hover:underline text-blue-500">Read more...</Link>
           </p>
         )}
         <button className="hover:bg-purple-800 px-4 py-2 mt-4 font-semibold text-white transition-colors duration-300 bg-purple-700 rounded-md">

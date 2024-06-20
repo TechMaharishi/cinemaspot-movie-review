@@ -10,7 +10,7 @@ import ScrollToTopButton from "../components/partials/ScrollToTopButton";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Popular = () => {
-  const [category, setCategory] = useState("movie");
+  const [category, setCategory] = useState('movie');
   const [loading, setLoading] = useState(true);
   const [popularData, setPopularData] = useState([]);
   const [page, setPage] = useState(1);
@@ -83,7 +83,7 @@ const Popular = () => {
         loader={<h1 className="text-center text-white">Loading...</h1>}
       >
         {popularData.map((media, index) => (
-          <Cards key={index} data={media} />
+          <Cards mediaType={category} key={index} data={media} />
         ))}
       </InfiniteScroll>
       <ScrollToTopButton />

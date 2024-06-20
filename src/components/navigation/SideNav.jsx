@@ -31,19 +31,6 @@ const SideNav = () => {
             <span className="font-semibold">Popular with</span>
           </Link>
         </nav>
-        {/* <div className="pt-6 mt-4 border-t border-gray-700">
-          <h2 className="mb-4 text-xl font-bold">Website Information</h2>
-          <nav className="flex flex-col space-y-4">
-            <Link to="/about-us" className="hover:bg-gray-700 hover:scale-105 flex items-center p-3 transition duration-300 ease-in-out transform rounded-lg">
-              <FaInfoCircle className="text-cyan-500 mr-3" />
-              <span className="font-semibold">About Us</span>
-            </Link>
-            <Link to="/contact-us" className="hover:bg-gray-700 hover:scale-105 flex items-center p-3 transition duration-300 ease-in-out transform rounded-lg">
-              <FaEnvelope className="mr-3 text-teal-500" />
-              <span className="font-semibold">Contact Us</span>
-            </Link>
-          </nav>
-        </div> */}
       </div>
     </div>
   );
